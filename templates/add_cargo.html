@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kilua</title>
+    </head>
+
+    <body>
+        <h1>Adicionar Cargo</h1>
+
+        <form id="cargo_form" method="post" action="/kilua/controle_admin/add_cargo/"> {% csrf_token %}
+
+
+            {% for field in form.visible_fields %}
+
+                {{ field.help_text }}
+                {{ field }}
+                <br>
+            {% endfor %}
+
+            <input type="submit" name="submit" value="Criar Cargo" />
+        </form>
+
+         <a href="/kilua/controle_admin"> Voltar </a>
+    </body>
+
+</html>
