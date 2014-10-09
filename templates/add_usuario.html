@@ -5,23 +5,30 @@
     </head>
 
     <body>
-        <h1>Adicionar Usuario</h1>
+        <h1>Registrar Usuario</h1>
 
-        <form id="user_form" method="post" action="/kilua/controle_admin/add_usuario/">{% csrf_token %}
+        {% if registered %}
+        Kilua: <strong>Usuario registrado com sucesso!</strong>
+            <a href="/kilua/controle_admin"> Home </a><br />
+        {% endif %}
 
 
-            {% for field in form.visible_fields %}
+        <form id="user_form" method="post" action="/kilua/controle_admin/add_usuario/"
+                enctype="multipart/form-data">
 
-                {{ field.help_text }}
-                {{ field }}
-                <br>
-            {% endfor %}
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
 
-            <input type="submit" name="submit" value="Criar Usuario" />
+
+            <input type="submit" name="submit" value="Register" />
         </form>
 
+
         <a href="/kilua/controle_admin"> Voltar </a>
-
     </body>
-
 </html>
+
+
+
+

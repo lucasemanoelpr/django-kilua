@@ -1,5 +1,6 @@
 from django import forms
-from Kilua.models import Usuario, Setor, Cargo
+from Kilua.models import Setor, Cargo, UserProfile
+from django.contrib.auth.models import User
 
 class SetorForm(forms.ModelForm):
     nome_setor = forms.CharField(max_length=128, help_text="Nome do Setor")
@@ -19,18 +20,14 @@ class CargoForm(forms.ModelForm):
 
 
 class UserForm(forms.ModelForm):
-    nome = forms.CharField(max_length=100, help_text="Nome Completo")
-    email = forms.CharField(max_length=50, help_text="Email")
-    senha = forms.CharField(max_length=20, help_text="Senha")
-
+    password = forms.CharField(widget=forms.PasswordInput())
+    username = forms.CharField(max_length=10)
     class Meta:
-        model = Usuario
-        fields = ('nome', 'email', 'senha')
+        model = User
+        fields = ('username', 'email', 'password')
 
-class LoginForm(forms.ModelForm):
-    email = forms.CharField(max_length=50, help_text="Email:")
-    senha = forms.CharField(max_length=20, help_text="Senha")
-
+class UserProfileForm(forms.ModelForm):
     class Meta:
-        model = Usuario
-        fields=('email', 'senha')
+        model = UserProfile
+        fields = ('codigo_tpuser', 'codigo_cargo')
+

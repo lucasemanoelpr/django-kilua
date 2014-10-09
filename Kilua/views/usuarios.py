@@ -1,31 +1,51 @@
-from Kilua.forms import *
-from django.contrib import messages
-from django.shortcuts import render, redirect
+from django.shortcuts import render_to_response, RequestContext
+from Kilua.forms import UserForm, UserProfileForm
+
 
 def add_user(request):
 
+    context = RequestContext(request)
+
+
+    registered = False
+
 
     if request.method == 'POST':
-        form = UserForm(request.POST)
 
-        if form.is_valid():
-            user = Usuario()
-            user.nome = request.POST['nome']
-            user.email = request.POST['email']
-            user.senha = request.POST['senha']
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileForm(data=request.POST)
+
+
+        if user_form.is_valid() and profile_form.is_valid():
+
+            user = user_form.save()
+
+
+            user.set_password(user.password)
             user.save()
 
-            messages.success(request, 'Usuario salvo com sucesso!')
-            return redirect('/kilua/controle_admin/')
+
+            profile = profile_form.save(commit=False)
+            profile.user = user
+
+
+
+            profile.save()
+
+
+            registered = True
+
 
         else:
-            messages.error(request, 'Ocorreu um erro ao cadastrar o Usuario. Tente novamente!')
-            return redirect('/kilua/controle_admin/add_usuario/')
-
+            print user_form.errors, profile_form.errors
 
 
     else:
+        user_form = UserForm()
+        profile_form = UserProfileForm()
 
-        form = UserForm()
 
-    return render(request, 'add_usuario.html', {'form':form})
+    return render_to_response(
+            'add_usuario.html',
+            {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
+            context)
