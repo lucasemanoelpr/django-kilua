@@ -1,29 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+    <head>
 
-    <meta charset="UTF-8">
-    {% block titulo %}
-        <title>Kilua-Login</title>
-    {% endblock %}
-</head>
-<body>
+        <title>Kilua: Login</title>
+    </head>
 
-    <h1>Login</h1>
-    <form id="user_form" method="post" action="/kilua/add_usuario/">
+    <body>
+        <h1>Kilua Login</h1>
 
+        <form id="login_form" method="post" action="/kilua/login/">
+            {% csrf_token %}
+            Usuario: <input type="text" name="username" value="" size="50" />
+            <br />
+            Senha: <input type="password" name="password" value="" size="50" />
+            <br />
 
-        {% for field in form.visible_fields %}
+            <input type="submit" value="submit" />
+        </form>
 
-            {{ field.help_text }}
-            {{ field }}
-
-        {% endfor %}
-
-        <input type='submit' value='Logar' />
-    </form>
-
-
-
-</body>
+    </body>
 </html>

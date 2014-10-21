@@ -12,6 +12,7 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
+LOGIN_URL = '/kilua/login/'
 MANAGERS = ADMINS
 
 DATABASES = {
