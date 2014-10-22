@@ -19,7 +19,7 @@ def add_cargo(request):
 
         else:
             messages.error(request, 'Ocorreu um erro ao cadastrar o Cargo. Tente novamente!')
-            return redirect('/controle/add_cargo/')
+            return redirect('/kilua/controle/add_cargo/')
 
 
 
