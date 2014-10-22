@@ -9,11 +9,11 @@
 
         {% if registered %}
         Kilua: <strong>Usuario registrado com sucesso!</strong>
-            <a href="/kilua/controle_admin"> Home </a><br />
+            <a href="/kilua/controle"> Home </a><br />
         {% endif %}
 
 
-        <form id="user_form" method="post" action="/kilua/controle_admin/add_usuario/"
+        <form id="user_form" method="post" action="/kilua/controle/add_usuario/"
                 enctype="multipart/form-data">
 
             {% csrf_token %}

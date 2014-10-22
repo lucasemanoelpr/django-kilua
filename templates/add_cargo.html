@@ -7,7 +7,7 @@
     <body>
         <h1>Adicionar Cargo</h1>
 
-        <form id="cargo_form" method="post" action="/kilua/controle_admin/add_cargo/"> {% csrf_token %}
+        <form id="cargo_form" method="post" action="/kilua/controle/add_cargo/"> {% csrf_token %}
 
 
             {% for field in form.visible_fields %}

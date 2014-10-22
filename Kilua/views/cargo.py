@@ -15,11 +15,11 @@ def add_cargo(request):
             cargo.save()
 
             messages.success(request, 'Cargo salvo com sucesso!')
-            return redirect('/kilua/controle_admin/')
+            return redirect('/kilua/controle/')
 
         else:
             messages.error(request, 'Ocorreu um erro ao cadastrar o Cargo. Tente novamente!')
-            return redirect('/controle_admin/add_cargo/')
+            return redirect('/controle/add_cargo/')
 
 
 

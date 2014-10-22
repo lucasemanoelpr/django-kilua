@@ -16,11 +16,11 @@ def add_setor(request):
             setor.save()
 
             messages.success(request, 'Setor salvo com sucesso!')
-            return redirect('/kilua/controle_admin/')
+            return redirect('/kilua/controle/')
 
         else:
             messages.error(request, 'Ocorreu um erro ao cadastrar o Setor. Tente novamente!')
-            return redirect('/controle_admin/add_setor/')
+            return redirect('/controle/add_setor/')
 
 
 
