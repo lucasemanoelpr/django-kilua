@@ -20,7 +20,7 @@ def add_setor(request):
 
         else:
             messages.error(request, 'Ocorreu um erro ao cadastrar o Setor. Tente novamente!')
-            return redirect('/controle/add_setor/')
+            return redirect('/kilua/controle/add_setor/')
 
 
 
