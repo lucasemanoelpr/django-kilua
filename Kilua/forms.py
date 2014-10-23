@@ -1,5 +1,5 @@
 from django import forms
-from Kilua.models import Setor, Cargo, UserProfile
+from Kilua.models import Setor, Cargo, UserProfile, Chamados, Prioridade
 from django.contrib.auth.models import User
 
 class SetorForm(forms.ModelForm):
@@ -31,3 +31,11 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ('codigo_tpuser', 'codigo_cargo')
 
+class ChamadosForm(forms.ModelForm):
+
+    comentario = forms.CharField(max_length=120, help_text="Comentario: ")
+    desc_problema = forms.CharField(max_length=120, help_text="Descricao do problema: ")
+
+    class Meta:
+        model = Prioridade
+        fields = ('id_tpproblema', 'comentario', 'desc_problema')

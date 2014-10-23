@@ -20,6 +20,9 @@ class Tipo_problema(models.Model):
     nome_tprob = models.CharField(max_length=50)
     nivel_tprob = models.IntegerField()
 
+    def __unicode__(self):
+        return self.nome_tprob
+
 class Tipo_usuario(models.Model):
     nome_tpuser = models.CharField(max_length=20)
 
@@ -27,14 +30,11 @@ class Tipo_usuario(models.Model):
         return self.nome_tpuser
 
 class UserProfile(models.Model):
-    # This line is required. Links UserProfile to a User model instance.
-    user = models.OneToOneField(User)
 
-    # The additional attributes we wish to include.
+    user = models.OneToOneField(User)
     codigo_tpuser = models.ForeignKey(Tipo_usuario)
     codigo_cargo = models.ForeignKey(Cargo)
 
-    # Override the __unicode__() method to return out something meaningful!
     def __unicode__(self):
         return self.user.username
 

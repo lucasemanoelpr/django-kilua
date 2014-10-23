@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kilua</title>
+    </head>
+
+    <body>
+        <h1>Adicionar Chamado</h1>
+
+        <form id="chamado_form" method="post" action="/kilua/controle/add_chamado/"> {% csrf_token %}
+
+
+            {% for field in form.visible_fields %}
+
+                {{ field.help_text }}
+                {{ field }}
+                <br>
+            {% endfor %}
+
+            <input type="submit" name="submit" value="Submiter" />
+        </form>
+
+         <a href="/kilua/controle"> Voltar </a>
+    </body>
+
+</html>
