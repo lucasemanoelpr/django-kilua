@@ -1,5 +1,5 @@
 from django import forms
-from Kilua.models import Setor, Cargo, UserProfile, Chamados, Prioridade
+from Kilua.models import Setor, Cargo, UserProfile, Chamados, Prioridade, Tipo_problema
 from django.contrib.auth.models import User
 
 class SetorForm(forms.ModelForm):

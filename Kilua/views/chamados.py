@@ -6,14 +6,17 @@ def add_chamado(request):
 
 
     if request.method == 'POST':
-        form = SetorForm(request.POST)
+
+        form = ChamadosForm(request.POST)
 
         if form.is_valid():
-            setor = Setor()
-            setor.nome_setor = request.POST['nome_setor']
-            setor.localidade = request.POST['localidade']
-            setor.telefone = request.POST['telefone']
-            setor.save()
+
+
+            call_form = ChamadosForm(data=request.POST)
+
+            call_form.save()
+
+            
 
             messages.success(request, 'Chamado salvo com sucesso!')
             return redirect('/kilua/controle/')
