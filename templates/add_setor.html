@@ -11,18 +11,22 @@
 
         <form id="setor_form" method="post" action="/kilua/controle/add_setor/"> {% csrf_token %}
 
+                {% for field in form.visible_fields %}
+                    <br>
+                    {{ field.help_text }}
+                    <br>
+                    {{ field }}
 
-            {% for field in form.visible_fields %}
-
-                {{ field.help_text }}
-                {{ field }}
+                {% endfor %}
                 <br>
-            {% endfor %}
+
+
 
             <button class="btn btn-primary" type="submit">Criar Setor</button>
         </form>
 
-        <a href="/kilua/controle"> Voltar </a>
+        <button class="btn btn-primary" type="submit"> <a href="/kilua/controle" class="voltar-white"> Voltar </a> </button>
+
     </div>
 {% endblock body_block %}
 {% endif %}

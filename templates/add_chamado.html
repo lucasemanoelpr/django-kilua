@@ -1,26 +1,30 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Kilua</title>
-    </head>
+{% extends 'base.html' %}
+{% load static %}
 
-    <body>
+
+{%  block title %} Chamado {% endblock title %}
+
+{% if user.is_authenticated %}
+
+{% block body_block %}
+    <div class="hero-unit">
+
         <h1>Adicionar Chamado</h1>
 
         <form id="chamado_form" method="post" action="/kilua/controle/add_chamado/"> {% csrf_token %}
 
-
-            {% for field in form.visible_fields %}
-
-                {{ field.help_text }}
-                {{ field }}
-                <br>
-            {% endfor %}
-
-            <input type="submit" name="submit" value="Submiter" />
+                    {% for field in form.visible_fields %}
+                        <br>
+                        {{ field.help_text }}
+                        <br>
+                        {{ field }}
+                    {% endfor %}
+                    <br>
+            <input type="submit" class="btn btn-primary" name="submit" value="Criar Chamado" />
         </form>
 
-         <a href="/kilua/controle"> Voltar </a>
-    </body>
+        <button class="btn btn-primary" type="submit"> <a href="/kilua/controle" class="voltar-white"> Voltar </a> </button>
 
-</html>
+    </div>
+{% endblock body_block%}
+{%  endif %}

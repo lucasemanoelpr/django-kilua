@@ -1,33 +1,38 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Kilua</title>
-    </head>
+{% extends 'base.html' %}
+{% load static %}
 
-    <body>
-        <h1>Registrar Usuario</h1>
+
+{%  block title %} Usuario {% endblock title %}
+
+{% if user.is_authenticated %}
+
+{% block body_block %}
+    <div class="hero-unit">
+        <h1>Registrar Usuario</h1><br>
 
         {% if registered %}
-        Kilua: <strong>Usuario registrado com sucesso!</strong>
-            <a href="/kilua/controle"> Home </a><br />
+            Kilua: <strong>Usuario registrado com sucesso!</strong>
+            <button class="btn btn-primary" type="submit"> <a href="/kilua/controle" class="voltar-white"> Home </a> </button><br/>
         {% endif %}
 
 
-        <form id="user_form" method="post" action="/kilua/controle/add_usuario/"
-                enctype="multipart/form-data">
+        <form id="user_form" method="post" action="/kilua/controle/add_usuario/" enctype="multipart/form-data">{% csrf_token %}
 
-            {% csrf_token %}
+
             {{ user_form.as_p }}
             {{ profile_form.as_p }}
 
 
-            <input type="submit" name="submit" value="Register" />
+            <button class="btn btn-primary" type="submit">Registrar</button>
         </form>
 
 
-        <a href="/kilua/controle"> Voltar </a>
-    </body>
-</html>
+        <button class="btn btn-primary" type="submit"> <a href="/kilua/controle" class="voltar-white"> Voltar </a> </button>
+    </div>
+{% endblock body_block %}
+{% endif %}
+
+
 
 
 

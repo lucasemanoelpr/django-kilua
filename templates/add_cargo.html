@@ -1,26 +1,35 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Kilua</title>
-    </head>
+{% extends 'base.html' %}
+{% load static %}
 
-    <body>
-        <h1>Adicionar Cargo</h1>
+
+{%  block title %} Cargo {% endblock title %}
+
+{% if user.is_authenticated %}
+
+{% block body_block %}
+    <div class="hero-unit">
+
+        <h1>Adicionar Cargo</h1><br>
 
         <form id="cargo_form" method="post" action="/kilua/controle/add_cargo/"> {% csrf_token %}
 
 
+
             {% for field in form.visible_fields %}
 
-                {{ field.help_text }}
-                {{ field }}
                 <br>
-            {% endfor %}
+                {{ field.help_text }}
+                <br>
+                {{ field }}
 
-            <input type="submit" name="submit" value="Criar Cargo" />
+
+            {% endfor %}
+            <br>
+            <input type="submit" class="btn btn-primary" name="submit" value="Criar Cargo" />
         </form>
 
-         <a href="/kilua/controle"> Voltar </a>
-    </body>
+        <button class="btn btn-primary" type="submit"> <a href="/kilua/controle" class="voltar-white"> Voltar </a> </button>
 
-</html>
+    </div>
+{% endblock body_block%}
+{%  endif %}

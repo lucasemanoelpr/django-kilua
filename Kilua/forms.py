@@ -21,7 +21,7 @@ class CargoForm(forms.ModelForm):
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
-    username = forms.CharField(max_length=10)
+    username = forms.CharField(max_length=10 )
     class Meta:
         model = User
         fields = ('username', 'email', 'password')
