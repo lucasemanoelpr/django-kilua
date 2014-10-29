@@ -3,8 +3,8 @@ from Kilua.models import Setor, Cargo, UserProfile, Chamados, Prioridade, Tipo_p
 from django.contrib.auth.models import User
 
 class SetorForm(forms.ModelForm):
-    nome_setor = forms.CharField(max_length=128, help_text="Nome do Setor")
-    localidade = forms.CharField(max_length=128, help_text="Localidade")
+    nome_setor = forms.CharField(max_length=128, help_text="Nome do Setor:")
+    localidade = forms.CharField(max_length=128, help_text="Localidade:")
     telefone = forms.IntegerField(help_text="Telefone:")
 
     class Meta:
@@ -12,8 +12,8 @@ class SetorForm(forms.ModelForm):
         #fields = ('nome_setor', 'localidade', 'telefone')
 
 class CargoForm(forms.ModelForm):
-    nome_cargo = forms.CharField(max_length=30, help_text="Insira um nome.")
-    nivel_cargo = forms.IntegerField(help_text="Informe um nivel de 1-10")
+    nome_cargo = forms.CharField(max_length=30, help_text="Insira um nome:")
+    nivel_cargo = forms.IntegerField(help_text="Informe um nivel de 1-10:")
 
     class Meta:
         model = Cargo

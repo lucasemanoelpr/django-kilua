@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Kilua</title>
-    </head>
+{% extends 'base.html' %}
+{% load static %}
 
-    <body>
-        <h1>Adicionar Setor</h1>
+{%  block title %} Controle {% endblock title %}
+
+{% if user.is_authenticated %}
+
+{% block body_block %}
+    <div class="hero-unit">
+        <h1>Adicionar Setor</h1><br>
 
         <form id="setor_form" method="post" action="/kilua/controle/add_setor/"> {% csrf_token %}
 
@@ -17,10 +19,12 @@
                 <br>
             {% endfor %}
 
-            <input type="submit" name="submit" value="Criar Setor" />
+            <button class="btn btn-primary" type="submit">Criar Setor</button>
         </form>
 
-         <a href="/kilua/controle"> Voltar </a>
-    </body>
+        <a href="/kilua/controle"> Voltar </a>
+    </div>
+{% endblock body_block %}
+{% endif %}
 
-</html>
+

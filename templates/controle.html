@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
+{% load static %}
+
+{%  block title %} Controle {% endblock title %}
+
+
+
 {% if user.is_authenticated %}
-<head lang="en">
 
-    <meta charset="UTF-8">
-    <title>Admin_control</title>
+{% block body_block %}
+    <div class="hero-unit">
 
-</head>
-<body>
-    <h1> Admin Controle </h1>
-    <h2> Cadastro       </h2>
-    <ul>
-        <li> <a href="add_setor">  Setor </a> </li>
-        <li> <a href="add_usuario"> Usuarios </a> </li>
-        <li> <a href="add_cargo"> Cargo </a> </li>
-        <li> <a href="add_chamado"> Realizar chamado </a> </li>
-    </ul>
 
-    <a href="/kilua/logout/">Logout</a><br />
-</body>
+    </div>
+{% endblock body_block %}
 
 {% else %}
 
     <a> Você não está logado no sistema para visualizar essa página, por favor, logue-se.</a> <br>
-    <a href="/kilua/login/">Login</a><br />
+    <a href="/kilua/login/">Login</a><br/>
 
 {% endif %}
-</html>

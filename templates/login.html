@@ -1,22 +1,29 @@
-<!DOCTYPE html>
-<html>
-    <head>
+{% extends 'base_login.html' %}
 
-        <title>Kilua: Login</title>
-    </head>
+{%  block title %} Login {% endblock title %}
 
-    <body>
-        <h1>Kilua Login</h1>
+{% block body_block %}
+    <div class="hero-unit">
+    <h1>Login no Kilua</h1>
+    <div class="container">
+    <form class="form-signin span4" id="login_form" method="post" action={% url 'login' %}>
+        <h2 class="form-signin-heading">Por favor faça o login</h2>
+        {% csrf_token %}
 
-        <form id="login_form" method="post" action="/kilua/login/">
-            {% csrf_token %}
-            Usuario: <input type="text" name="username" value="" size="50" />
-            <br />
-            Senha: <input type="password" name="password" value="" size="50" />
-            <br />
+        {% if bad_details %}
+        <p><strong>Seu usuário ou senha estão incorretos!</strong></p>
+        {% elif disabled_account %}
+        <p><strong>Sua conta foi desabilitada; não podemos efetuar o login in!</strong></p>
+        {% endif %}
 
-            <input type="submit" value="submit" />
-        </form>
+        Nome do usuário: <input type="text" class="input-block-level" placeholder="Nome do usuário" name="username" value="" size="50" />
+        <br />
+        Senha: <input type="password" class="input-block-level" placeholder="Senha" name="password" value="" size="50" />
+        <br />
+        <button class="btn btn-primary" type="submit">Sign in</button>
+    </form>
 
-    </body>
-</html>
+    </div>
+    <!-- /container -->
+    </div>
+{% endblock body_block %}
