@@ -16,7 +16,7 @@ def add_chamado(request):
 
             call_form.save()
 
-            
+
 
             messages.success(request, 'Chamado salvo com sucesso!')
             return redirect('/kilua/controle/')

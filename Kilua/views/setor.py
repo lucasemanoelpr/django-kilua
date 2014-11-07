@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 
 def add_setor(request):
 
+    registered = False
 
     if request.method == 'POST':
         form = SetorForm(request.POST)
@@ -14,9 +15,8 @@ def add_setor(request):
             setor.localidade = request.POST['localidade']
             setor.telefone = request.POST['telefone']
             setor.save()
+            registered = True
 
-            messages.success(request, 'Setor salvo com sucesso!')
-            return redirect('/kilua/controle/')
 
         else:
             messages.error(request, 'Ocorreu um erro ao cadastrar o Setor. Tente novamente!')
@@ -28,4 +28,4 @@ def add_setor(request):
 
         form = SetorForm()
 
-    return render(request, 'add_setor.html', {'form':form})
+    return render(request, 'add_setor.html', {'form':form, 'registered': registered})

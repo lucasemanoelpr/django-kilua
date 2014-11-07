@@ -7,6 +7,11 @@
 
 {% block body_block %}
     <div class="hero-unit">
+        {% if registered %}
+            <strong>Setor registrado com sucesso!</strong> <br>
+            <button class="btn btn-primary" type="submit"> <a href="/kilua/controle" class="voltar-white"> Home </a> </button><br/>
+
+        {% else %}
         <h1>Adicionar Setor</h1><br>
 
         <form id="setor_form" method="post" action="/kilua/controle/add_setor/"> {% csrf_token %}
@@ -25,8 +30,8 @@
             <button class="btn btn-primary" type="submit">Criar Setor</button>
         </form>
 
-        <button class="btn btn-primary" type="submit"> <a href="/kilua/controle/" class="voltar-white"> Voltar </a> </button>
-
+        <button class="btn btn-primary" type="submit"> <a href="/kilua/controle" class="voltar-white"> Voltar </a> </button>
+        {% endif %}
     </div>
 {% endblock body_block %}
 {% endif %}
