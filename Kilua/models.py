@@ -15,6 +15,9 @@ class Setor(models.Model):
     localidade = models.CharField(max_length=30)
     telefone = models.IntegerField()
 
+    def __unicode__(self):
+        return self.nome_setor
+
 class Tipo_problema(models.Model):
     nome_tprob = models.CharField(max_length=50)
     nivel_tprob = models.IntegerField()
@@ -39,6 +42,7 @@ class UserProfile(models.Model):
 
 
 class Prioridade(models.Model):
+    id_setor = models.ForeignKey(Setor)
     id_tpproblema = models.ForeignKey(Tipo_problema)
     comentario = models.CharField(max_length=120)
     desc_problema = models.CharField(max_length=120)

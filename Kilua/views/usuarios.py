@@ -1,7 +1,8 @@
 from django.shortcuts import render_to_response, RequestContext
 from Kilua.forms import UserForm, UserProfileForm
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def add_user(request):
 
     context = RequestContext(request)

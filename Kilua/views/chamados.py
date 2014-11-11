@@ -1,7 +1,9 @@
 from Kilua.forms import *
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def add_chamado(request):
 
 
@@ -29,6 +31,6 @@ def add_chamado(request):
 
     else:
 
-        form = ChamadosForm()
+        chamado_form = ChamadosForm()
 
-        return render(request, 'add_chamado.html', {'form':form})
+        return render(request, 'add_chamado.html', {'form':chamado_form})
