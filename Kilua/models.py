@@ -36,28 +36,31 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
     codigo_tpuser = models.ForeignKey(Tipo_usuario)
     codigo_cargo = models.ForeignKey(Cargo)
+    codigo_setor = models.ForeignKey(Setor)
 
     def __unicode__(self):
         return self.user.username
 
 
 class Prioridade(models.Model):
+
+    id_user = models.IntegerField()
     id_setor = models.ForeignKey(Setor)
     id_tpproblema = models.ForeignKey(Tipo_problema)
     comentario = models.CharField(max_length=120)
     desc_problema = models.CharField(max_length=120)
 
 class Chamados(models.Model):
+
     id_prioridade = models.ForeignKey(Prioridade)
-    id_setor = models.ForeignKey(Setor)
     data_inicio = models.DateField()
     data_termino = models.DateField()
     desc_solucao = models.CharField(max_length=120)
 
 class Historico(models.Model):
-    id_prioridade = models.ForeignKey(Prioridade)
-    id_setor = models.ForeignKey(Setor)
+
     id_chamado = models.IntegerField()
+    id_prioridade = models.ForeignKey(Prioridade)
     data_inicio = models.DateField()
     data_termino = models.DateField()
     desc_solucao = models.CharField(max_length=120)

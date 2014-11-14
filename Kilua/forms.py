@@ -30,15 +30,15 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('codigo_tpuser', 'codigo_cargo')
+        fields = ('codigo_tpuser', 'codigo_cargo', 'codigo_setor')
 
 class ChamadosForm(forms.ModelForm):
 
-    
 
+    id_user = forms.IntegerField(widget=forms.HiddenInput())
     comentario = forms.CharField(max_length=120, help_text="Comentario: ")
     desc_problema = forms.CharField(max_length=120, help_text="Descricao do problema: ")
 
     class Meta:
         model = Prioridade
-        fields = ('id_setor', 'id_tpproblema', 'comentario', 'desc_problema')
+        fields = ('id_user', 'id_setor', 'id_tpproblema', 'comentario', 'desc_problema')
