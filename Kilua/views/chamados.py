@@ -20,21 +20,21 @@ def add_chamado(request):
 
             call_form.save()
 
+            # Pega todos os ids de prioridade e ordena por ordem de entrada
+            last_inserted = Prioridade.objects.order_by('-id')[0]
+            priori = Prioridade.objects.get(id=last_inserted.id)
+
             # Cadastro de Chamados
 
-            #chamado = Chamados()
+            chamado = Chamados()
+            chamado.id_prioridade = priori
+            chamado.id_user = request.POST['id_user']
+            chamado.data_inicio = datetime.datetime.now()
 
-            #chamado.id_prioridade =
-            #chamado.id_user = auth_user.id
-            #chamado.data_inicio = datetime.datetime.now()
+            chamado.save()
 
 
 
-
-            #setor.nome_setor = request.POST['nome_setor']
-            #setor.localidade = request.POST['localidade']
-            #setor.telefone = request.POST['telefone']
-            #setor.save()
 
 
 
