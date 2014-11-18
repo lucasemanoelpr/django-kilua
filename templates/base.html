@@ -46,14 +46,22 @@
                     <div class="well sidebar-nav">
                         <h1>Menu</h1>
                         <ul>
-                            <li> <a href="/kilua/controle/add_setor">  Setor </a> </li>
-                            <li> <a href="/kilua/controle/add_usuario"> Usuarios </a> </li>
-                            <li> <a href="/kilua/controle/add_cargo"> Cargo </a> </li>
-                            <li> <a href="/kilua/controle/add_chamado"> Realizar chamado </a> </li>
+                            {% if user.codigo_tpuser == 3 %}
+                                <li> <a href=""> em teste </a> </li>
+                                <li> <a href=""> em teste </a> </li>
+                                <li> <a href=""> em teste </a> </li>
+                                <li> <a href=""> em teste </a> </li>
+                            {% else %}
+                                <li> <a href="/kilua/controle/add_setor"> {{ user.codigo_tpuser }} Setor </a> </li>
+                                <li> <a href="/kilua/controle/add_usuario"> Usuarios </a> </li>
+                                <li> <a href="/kilua/controle/add_cargo"> Cargo </a> </li>
+                                <li> <a href="/kilua/controle/add_chamado"> Realizar chamado </a> </li>
+                            {% endif %}
+
                         </ul>
-       <!--- Empty for the timebeing -->
+
                      </div>
-                <!--/.well -->
+
                 </div>
 
                 <!--/span-->

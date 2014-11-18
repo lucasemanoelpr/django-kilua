@@ -10,7 +10,11 @@
 {% block body_block %}
     <div class="hero-unit">
 
-
+        <ol>
+        {% for chamado in chamados %}
+             <li> {{ chamado.id_user }} ({{ chamado.id_setor }}) ({{chamado.id_tpproblema}}) ({{chamado.nivel}}) ({{chamado.comentario}}) ({{chamado.desc_problema}})  </li>
+        {% endfor %}
+        </ol>
     </div>
 {% endblock body_block %}
 

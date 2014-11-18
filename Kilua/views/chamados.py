@@ -34,12 +34,6 @@ def add_chamado(request):
             chamado.save()
 
 
-
-
-
-
-
-            messages.success(request, 'Chamado salvo com sucesso!')
             return redirect('/kilua/controle/')
 
         else:
