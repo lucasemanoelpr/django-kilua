@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 @login_required
 def controle_admin(request):
     context = {}
-    nivel = []
     chamado_list = Prioridade.objects.all()
 
     for x in chamado_list:
