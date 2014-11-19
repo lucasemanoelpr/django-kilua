@@ -1,7 +1,7 @@
 from django import forms
 from Kilua.models import Setor, Cargo, UserProfile, Chamados, Prioridade, Tipo_problema
 from django.contrib.auth.models import User
-
+import datetime
 
 class SetorForm(forms.ModelForm):
     nome_setor = forms.CharField(max_length=128, help_text="Nome do Setor:")
@@ -31,6 +31,13 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('codigo_tpuser', 'codigo_cargo', 'codigo_setor')
+
+class AlterchamadosForm(forms.ModelForm):
+    data_termino = forms.DateField(initial=datetime.date.today,widget=forms.HiddenInput())
+    desc_solucao = forms.CharField(max_length=120, help_text="Descricao da solucao: ")
+    class Meta:
+        model = Chamados
+        fields = ('data_termino','desc_solucao')
 
 class ChamadosForm(forms.ModelForm):
 

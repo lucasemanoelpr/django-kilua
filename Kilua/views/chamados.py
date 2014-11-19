@@ -57,17 +57,30 @@ def visualizar(request, chamado_id):
 
     context = {}
 
-
     if request.method == 'POST':
-        pass
+        form = ChamadosForm(request.POST)
+
+        chamado = Chamados.objects.get(id_prioridade=chamado_id)
+        chamado.data_termino = datetime.datetime.now()
+        chamado.desc_solucao = request.POST['desc_solucao']
+        chamado.save()
+        return redirect('/kilua/controle/')
+
+
 
     else:
 
-        chama = Prioridade.objects.get(id=chamado_id)
-        # essa porra de linha abaixo pega os valores de tabela de uma chave estrangeira
-        e = User.objects.get(id=chama.id_user)
+        # Essas linhas abaixo pegam os valores da tabela relacionada a chave estrangeira
 
+        chama = Prioridade.objects.get(id=chamado_id)
+        e = User.objects.get(id=chama.id_user)
+        chamad = Chamados.objects.get(id_prioridade=chamado_id)
+        form = AlterchamadosForm()
         context['chamados'] = chama
         context['user'] = e
+        context['chamad'] = chamad
+        context['form'] = form
 
-    return render_to_response('chamado.html', context)
+    return render(request, 'chamado.html', context)
+
+#    return render_to_response('chamado.html', context)

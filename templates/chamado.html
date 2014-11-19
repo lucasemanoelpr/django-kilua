@@ -12,8 +12,17 @@
        Setor:                   {{ chamados.id_setor }} <br>
        Problema:                {{ chamados.id_tpproblema }} <br>
        Comentário:              {{ chamados.comentario }} <br>
-       Descrição do Problema:   {{ chamados.desc_problema }}
-
+       Descrição do Problema:   {{ chamados.desc_problema }} <br>
+       Data do inicio:   {{ chamad.data_inicio }}
+       <form id="alter_form" method="post" action="#"> {% csrf_token %}
+            {% for field in form.visible_fields %}
+                {{ field.help_text }}
+                <br>
+                {{ field }}
+            {% endfor %}
+            <br>
+            <input type="submit" class="btn btn-primary" name="submit" value="Finalizar Chamado" />
+       </form>
     </div>
 {% endblock body_block %}
 
