@@ -13,8 +13,10 @@ urlpatterns = patterns('',
         url(r'^kilua/controle/$', Kilua.views.telas_login.controle_admin, name='controle'),
         url(r'^kilua/controle/add_setor/$', Kilua.views.setor.add_setor, name='add_setor'),
         url(r'^kilua/controle/chamado/(?P<chamado_id>\d+)/$', Kilua.views.chamados.visualizar, name='chamado'),
+        url(r'^kilua/controle/historico/(?P<historico_id>\d+)/$', Kilua.views.chamados.visualizar_historico, name='historico'),
         url(r'^kilua/controle/add_chamado/$', Kilua.views.chamados.add_chamado, name='add_chamado'),
         url(r'^kilua/controle/add_usuario/$', Kilua.views.usuarios.add_user, name='add_usuario'),
+        url(r'^kilua/controle/historico/$', Kilua.views.chamados.historico, name='historico'),
         url(r'^kilua/controle/add_cargo/$', Kilua.views.cargo.add_cargo, name='add_cargo'),
 
 

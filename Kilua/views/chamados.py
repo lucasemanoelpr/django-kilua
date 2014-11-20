@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from Kilua.models import Prioridade, Chamados
 import datetime
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 @login_required
 def add_chamado(request):
@@ -84,3 +85,39 @@ def visualizar(request, chamado_id):
     return render(request, 'chamado.html', context)
 
 #    return render_to_response('chamado.html', context)
+@login_required
+def historico(request):
+
+
+    context = {}
+    chama = []
+
+    cham = Chamados.objects.filter(~Q(data_termino=None))
+
+    if len(cham)>0:
+        for z in cham:
+            chama.append(z.id_prioridade)
+
+        for x in chama:
+            x.id_user = (User.objects.get(id=x.id_user))
+            x.nivel = (Tipo_problema.objects.get(nome_tprob=x.id_tpproblema)).nivel_tprob
+
+        context['chamados'] = chama
+
+    return render(request, 'historico.html', context)
+
+@login_required
+def visualizar_historico(request, historico_id):
+
+
+    context = {}
+    chama = Prioridade.objects.get(id=historico_id)
+    e = User.objects.get(id=chama.id_user)
+    chamad = Chamados.objects.get(id_prioridade=historico_id)
+
+    context['chamados'] = chama
+    context['user'] = e
+    context['chamad'] = chamad
+
+
+    return render(request, 'visualizar_historico.html', context)

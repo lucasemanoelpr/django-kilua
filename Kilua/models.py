@@ -57,6 +57,7 @@ class Chamados(models.Model):
     data_termino = models.DateField()
     desc_solucao = models.CharField(max_length=120)
 
+
 class Historico(models.Model):
 
     id_chamado = models.IntegerField()
