@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{%  block title %} Controle {% endblock title %}
+{%  block title %} Histórico {% endblock title %}
 
 
 
@@ -10,30 +10,58 @@
 {% block body_block %}
     <div class="hero-unit">
         <h2> Fila de Chamados </h2>
-        <ol>
+        <tbody>
+            <table class="table ">
+                {% if user.username in usuarios %}
+                    <thead>
+                        <tr>
+                            <th>ID Chamado</th>
+                            <th>ID Setor</th>
+                            <th>ID Tipo Problema</th>
+                            <th>Comentrário</th>
+                            <th>Descrição Problema</th>
+                        </tr>
+                    </thead>
+                    {% for chamado in chamados %}
+                        <tr>
+                        {% if user.username == chamado.id_user.username %}
+                            <td><a href="/kilua/controle/chamado/{{ chamado.id }}">{{ chamado.id }}</a></td>
+                            <td>({{ chamado.id_setor }})</td>
+                            <td>({{chamado.id_tpproblema}})</td>
+                            <td>({{chamado.comentario}})</td>
+                            <td>({{chamado.desc_problema}})</td>
+                        {% endif %}
+                        </tr>
+                    {% endfor %}
 
-        {% if user.username in usuarios %}
-
-            {% for chamado in chamados %}
-                {% if user.username == chamado.id_user.username %}
-                    <li> <a href="/kilua/controle/chamado/{{ chamado.id }}"> {{ chamado.id_user }} ({{ chamado.id_setor }}) ({{chamado.id_tpproblema}}) ({{chamado.comentario}}) ({{chamado.desc_problema}}) </a> </li>
+                {% else %}
+                    <thead>
+                        <tr>
+                            <th>ID Chamado</th>
+                            <th>ID Setor</th>
+                            <th>ID Tipo Problema</th>
+                            <th>Nível</th>
+                            <th>Comentrário</th>
+                            <th>Descrição Problema</th>
+                        </tr>
+                    </thead>
+                    {% for chamado in chamados %}
+                         <tr>
+                            <td><a href="/kilua/controle/chamado/{{ chamado.id }}">{{ chamado.id }}</a></td>
+                            <td>({{ chamado.id_setor }})</td>
+                            <td>({{chamado.id_tpproblema}})</td>
+                            <td>({{chamado.nivel}})</td>
+                            <td>({{chamado.comentario}})</td>
+                            <td>({{chamado.desc_problema}})</td>
+                         </tr>
+                    {% endfor %}
                 {% endif %}
-            {% endfor %}
+            </table>
+        </tbody>
 
-        {% else %}
-
-            {% for chamado in chamados %}
-                 <li> <a href="/kilua/controle/chamado/{{ chamado.id }}"> {{ chamado.id_user }} ({{ chamado.id_setor }}) ({{chamado.id_tpproblema}}) ({{chamado.nivel}}) ({{chamado.comentario}}) ({{chamado.desc_problema}}) </a> </li>
-            {% endfor %}
-
-        </ol>
-        {% endif %}
-    </div>
-{% endblock body_block %}
-
+        </div>
+    {% endblock body_block %}
 {% else %}
-
     <a> Você não está logado no sistema para visualizar essa página, por favor, logue-se.</a> <br>
     <a href="/kilua/login/">Login</a><br/>
-
 {% endif %}
