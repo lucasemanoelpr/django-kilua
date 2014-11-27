@@ -26,7 +26,7 @@
                 {% for chamado in chamados %}
                     <tr>
                     {% if user.username == chamado.id_user.username %}
-                        <td><a href="/kilua/controle/historico/{{ chamado.id }}">{{ chamado.id }}</a></td>
+                        <td><a href="/kilua/controle/historico/{{ chamado.id }}">{{ chamado.id_user }}</a></td>
                         <td>({{ chamado.id_setor }})</td>
                         <td>({{chamado.id_tpproblema}})</td>
                         <td>({{chamado.comentario}})</td>
@@ -39,7 +39,7 @@
 
                 {% for chamado in chamados %}
                      <tr>
-                        <td><a href="/kilua/controle/historico/{{ chamado.id }}">{{ chamado.id }}</a></td>
+                        <td><a href="/kilua/controle/historico/{{ chamado.id }}">{{ chamado.id_user }}</a></td>
                         <td>({{ chamado.id_setor }})</td>
                         <td>({{chamado.id_tpproblema}})</td>
                         <td>({{chamado.comentario}})</td>

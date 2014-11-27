@@ -25,7 +25,7 @@
                     {% for chamado in chamados %}
                         <tr>
                         {% if user.username == chamado.id_user.username %}
-                            <td><a href="/kilua/controle/chamado/{{ chamado.id }}">{{ chamado.id }}</a></td>
+                            <td><a href="/kilua/controle/chamado/{{ chamado.id }}">{{ chamado.id_user }}</a></td>
                             <td>({{ chamado.id_setor }})</td>
                             <td>({{chamado.id_tpproblema}})</td>
                             <td>({{chamado.comentario}})</td>
@@ -47,8 +47,8 @@
                     </thead>
                     {% for chamado in chamados %}
                          <tr>
-                            <td><a href="/kilua/controle/chamado/{{ chamado.id }}">{{ chamado.id }}</a></td>
-                            <td>({{ chamado.id_setor }})</td>
+                            <td><a href="/kilua/controle/chamado/{{ chamado.id }}">{{ chamado.id_user }}</a></td>
+                            <td>({{chamado.id_setor }})</td>
                             <td>({{chamado.id_tpproblema}})</td>
                             <td>({{chamado.nivel}})</td>
                             <td>({{chamado.comentario}})</td>
