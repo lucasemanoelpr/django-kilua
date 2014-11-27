@@ -11,9 +11,21 @@
     <div class="hero-unit">
         <h2> Histórico </h2>
         <ol>
-        {% for chamado in chamados %}
-             <li> <a href="/kilua/controle/historico/{{ chamado.id }}" > {{ chamado.id_user }} ({{ chamado.id_setor }}) ({{chamado.id_tpproblema}}) ({{chamado.nivel}}) ({{chamado.comentario}}) ({{chamado.desc_problema}}) </a> </li>
-        {% endfor %}
+        {% if user.username in usuarios %}
+
+            {% for chamado in chamados %}
+                {% if user.username == chamado.id_user.username %}
+                    <li> <a href="/kilua/controle/historico/{{ chamado.id }}" > {{ chamado.id_user }} ({{ chamado.id_setor }}) ({{chamado.id_tpproblema}}) ({{chamado.nivel}}) ({{chamado.comentario}}) ({{chamado.desc_problema}}) </a> </li>
+                {% endif %}
+            {% endfor %}
+
+        {% else %}
+
+            {% for chamado in chamados %}
+                 <li> <a href="/kilua/controle/historico/{{ chamado.id }}" > {{ chamado.id_user }} ({{ chamado.id_setor }}) ({{chamado.id_tpproblema}}) ({{chamado.nivel}}) ({{chamado.comentario}}) ({{chamado.desc_problema}}) </a> </li>
+            {% endfor %}
+        {% endif %}
+
         </ol>
     </div>
 {% endblock body_block %}

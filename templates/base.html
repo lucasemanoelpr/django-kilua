@@ -46,13 +46,13 @@
                     <div class="well sidebar-nav">
                         <h1>Menu</h1>
                         <ul>
-                            {% if user.codigo_tpuser == 3 %}
-                                <li> <a href=""> em teste </a> </li>
-                                <li> <a href=""> em teste </a> </li>
-                                <li> <a href=""> em teste </a> </li>
-                                <li> <a href=""> em teste </a> </li>
+
+
+                            {% if user.username in usuarios %}
+                                <li> <a href="/kilua/controle/add_chamado"> Realizar chamado </a> </li>
+                                <li> <a href="/kilua/controle/historico"> Histórico de Chamados </a> </li>
                             {% else %}
-                                <li> <a href="/kilua/controle/add_setor"> {{ user.codigo_tpuser }} Setor </a> </li>
+                                <li> <a href="/kilua/controle/add_setor"> {{ UserProfile }} Setor </a> </li>
                                 <li> <a href="/kilua/controle/add_usuario"> Usuarios </a> </li>
                                 <li> <a href="/kilua/controle/add_cargo"> Cargo </a> </li>
                                 <li> <a href="/kilua/controle/add_chamado"> Realizar chamado </a> </li>

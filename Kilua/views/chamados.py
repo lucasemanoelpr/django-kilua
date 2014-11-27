@@ -46,11 +46,21 @@ def add_chamado(request):
 
 
     else:
-
+        context = {}
         chamado_form = ChamadosForm()
         chamado_form.fields['id_user'].initial = request.user.id
 
-        return render(request, 'add_chamado.html', {'form':chamado_form})
+        ## Permissao de usuario
+
+        c = UserProfile.objects.filter(codigo_tpuser=3)
+        var = []
+        for i in c:
+            var.append((User.objects.get(username=i.user)).username)
+        context['form'] = chamado_form
+        context['usuarios'] = var
+
+
+        return render(request, 'add_chamado.html', context)
 
 @login_required
 def visualizar(request, chamado_id):
@@ -78,9 +88,18 @@ def visualizar(request, chamado_id):
         chamad = Chamados.objects.get(id_prioridade=chamado_id)
         form = AlterchamadosForm()
         context['chamados'] = chama
-        context['user'] = e
+        context['usera'] = e
         context['chamad'] = chamad
         context['form'] = form
+
+        # Permissao de usuario
+
+        c = UserProfile.objects.filter(codigo_tpuser=3)
+        var = []
+        for i in c:
+            var.append((User.objects.get(username=i.user)).username)
+
+        context['usuarios'] = var
 
     return render(request, 'chamado.html', context)
 
@@ -104,6 +123,17 @@ def historico(request):
 
         context['chamados'] = chama
 
+        # Permissao de usuario
+
+        c = UserProfile.objects.filter(codigo_tpuser=3)
+        var = []
+        for i in c:
+            var.append((User.objects.get(username=i.user)).username)
+
+        context['usuarios'] = var
+
+
+
     return render(request, 'historico.html', context)
 
 @login_required
@@ -116,8 +146,17 @@ def visualizar_historico(request, historico_id):
     chamad = Chamados.objects.get(id_prioridade=historico_id)
 
     context['chamados'] = chama
-    context['user'] = e
+    context['usera'] = e
     context['chamad'] = chamad
+
+    # Permissao de usuario
+
+    c = UserProfile.objects.filter(codigo_tpuser=3)
+    var = []
+    for i in c:
+        var.append((User.objects.get(username=i.user)).username)
+
+    context['usuarios'] = var
 
 
     return render(request, 'visualizar_historico.html', context)
