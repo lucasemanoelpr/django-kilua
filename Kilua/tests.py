@@ -8,7 +8,7 @@ class LogarTest(unittest.TestCase):
 	
 	def teste(self):
 		c = Client()
-		c.login(username='teste', password='teste')
+		rx = c.login(username='teste', password='teste')
 		
 
 class CargoTest(TestCase):
