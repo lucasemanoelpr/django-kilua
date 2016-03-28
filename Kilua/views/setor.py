@@ -18,6 +18,7 @@ def add_setor(request):
             setor.telefone = request.POST['telefone']
             setor.save()
             registered = True
+            
 
 
         else:
