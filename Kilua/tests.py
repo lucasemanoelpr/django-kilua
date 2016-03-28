@@ -1,11 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
-"""
-
 import unittest
 from django.test import TestCase
 from Kilua.models import Setor, Cargo 
@@ -15,7 +8,7 @@ class LogarTest(unittest.TestCase):
 	
 	def teste(self):
 		c = Client()
-		response=c.login(username='teste', password='teste')
+		c.login(username='teste', password='teste')
 		
 
 class CargoTest(TestCase):
