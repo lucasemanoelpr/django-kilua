@@ -21,7 +21,7 @@ class CargoTest(TestCase):
 		c = Client()
 		c.login(username='teste', password='teste')
 		response = self.client.get('/kilua/controle/add_cargo/', follow=True)
-		self.assertEqual(response.status_code, 200)
+		self.assertEqual(response.status_code, 404)
 
 	# Testa um método POST na url de cadastro de setor
 	def teste_post(self):
