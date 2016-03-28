@@ -28,7 +28,7 @@ class CargoTest(TestCase):
 		c = Client()
 		c.login(username='teste', password='teste')
 		response = c.post('/kilua/controle/add_cargo/', {'nome_cargo': 'Chefe', 'nivel_cargo': 10}, follow=True)
-		self.assertEqual(response.status_code, 200) 
+		self.assertEqual(response.status_code, 404) 
 
 
 class SetorTest(unittest.TestCase):
