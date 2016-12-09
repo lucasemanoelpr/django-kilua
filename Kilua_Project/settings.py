@@ -123,6 +123,8 @@ TEMPLATE_DIRS = (
     TEMPLATE_PATH,
 )
 
+
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -134,9 +136,10 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    'django.contrib.sessions',
     'Kilua',
 )
+
+
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
