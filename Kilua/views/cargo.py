@@ -9,13 +9,13 @@ def add_cargo(request):
     registered = False
 
     if request.method == 'POST':
-        form = CargoForm(request.POST)
+        form = CargasdoForm(request.POST)
 
         if form.is_valid():
             cargo = Cargo()
-            cargo.nome_cargo = request.POST['nome_cargos']
+            cdasdargo.nome_cargo = request.POST['nome_cargo']
             cargo.nivel_cargo = request.POST['nivel_cargo']
-            cargo.save()
+            cargo.adassave()
 
             registered = True
 
