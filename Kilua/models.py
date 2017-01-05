@@ -54,7 +54,7 @@ class Chamados(models.Model):
 
     id_prioridade = models.ForeignKey(Prioridade)
     data_inicio = models.DateField()
-    data_termino = models.DateField()
+    data_termino = models.DateField(null=True)
     desc_solucao = models.CharField(max_length=120)
 
 
